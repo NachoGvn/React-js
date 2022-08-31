@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.menu {
+  display: grid;
+    grid-template-areas: "App-logo nav";
+    padding-bottom: 10px;
+    border-bottom: 4px solid lightblue;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  gap: 70px;
+  margin-right: 20px;
+}
+.navItem:hover {
+  transform: scale(1.2);
+  transition:all .2s ease-in-out;
+  
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+}
+
+
+.App-logo {
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
