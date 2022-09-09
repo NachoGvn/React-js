@@ -2,10 +2,10 @@ import {useState} from 'react'
 import {useEffect} from 'react'
 
 const OnAdd = () => {
-    const [contador,setContador] = useState(1)
-    const [stock,setStock] = useState(4)
-    const [precio,setPrecio] = useState(100)
-    const precioF = 100
+    let [contador,setContador] = useState(1)
+    let [stock,setStock] = useState(4)
+    let [precio,setPrecio] = useState(100)
+    let precioF = 100
 
     
     const aumentar = () => {
@@ -14,7 +14,7 @@ const OnAdd = () => {
         preciosSuma()
         if ( contador == 5 && stock === 0){
             alert("No hay mas stock")
-            setContador(contador = 5)
+            
             
         }
         console.log(setContador)
@@ -28,11 +28,11 @@ const OnAdd = () => {
         }
         console.log(setContador)
     }
-    const preciosSuma = () => {
+    let preciosSuma = () => {
         setPrecio(precioF * contador + precioF)
         precio = precioF
     }
-    const preciosResta = () => {
+    let preciosResta = () => {
         setPrecio(precioF * contador - precioF)
         precio = precioF
     }
@@ -44,6 +44,14 @@ const OnAdd = () => {
       useEffect(() => {
         if (contador && (+contador < 1)) setContador(1)
       }, [contador])
+
+      useEffect(() => {
+        if (precio && (+precio > 500)) setPrecio(500)
+      }, [precio])
+
+      useEffect(() => {
+        if (precio && (+precio < 100)) setPrecio(100)
+      }, [precio])
 
   return (
     <div>
