@@ -1,13 +1,13 @@
 import data from '../MockData'
 import { useEffect, useState } from 'react'
-import ItemList from '../ItemList/ItemList'
+import ItemDetail from "../ItemDetail/ItemDetail"
 
-const ItemListContainer  = ({greeting}) => {
+const ItemDetailContainer  = ({greeting}) => {
 
-    const [productList, setProductList] = useState([])
+    const [detailProducts, setDetailProducts] = useState([])
 
     useEffect(()  => {getProducts.then((response) => {
-        setProductList(response)
+        setDetailProducts(response)
     })
     .catch((error) => console.error(error));
     }, [])
@@ -20,8 +20,8 @@ const ItemListContainer  = ({greeting}) => {
         })
     
     return ( 
-        <ItemList lista ={productList} />
+        <ItemDetail lista ={detailProducts} />
             );
         }
 
-        export default ItemListContainer
+        export default ItemDetailContainer

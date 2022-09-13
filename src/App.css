@@ -79,3 +79,18 @@
   padding-top: 1rem;
   
 }
+
+.image {
+  margin-top: 50px;
+}
+
+.name {
+  justify-content: center;
+}
+
+.descripcion {
+  justify-content: justify;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
