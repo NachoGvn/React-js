@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom"
 import Item from "../Item/Item"
 
 const ItemList = ({lista}) => {
@@ -6,11 +7,13 @@ const ItemList = ({lista}) => {
     <div>
       {
       lista.map((product) =>  (
+        <Link key={product.id} to={'/detail/'+ product.id} style={{textDecoration: 'none'}}>
+        
         <Item
-        key={product.id}
-         nombre={product.nombre} 
+        nombre={product.nombre} 
         precio={product.precio} 
         url={product.url} />
+        </Link>
       )) 
     }
       </div>
