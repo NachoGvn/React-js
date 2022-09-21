@@ -94,3 +94,14 @@
   padding-right: 200px;
 }
 
+.finalizar {
+  display: block;
+  background-color: black;
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 20px;
+  margin-left: 700px;
+  margin-right: 700px;
+  
+}

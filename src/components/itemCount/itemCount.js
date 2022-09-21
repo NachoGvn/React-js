@@ -1,11 +1,12 @@
 import {useState} from 'react'
 import {useEffect} from 'react'
+import data from '../MockData'
+import { useParams } from 'react-router-dom'
 
-const OnAdd = () => {
-    let [contador,setContador] = useState(1)
+const OnAdd = ({setContador, contador}) => {
     let [stock,setStock] = useState(4)
-    let [precio,setPrecio] = useState(100)
-    let precioF = 100
+    let [precios,setPrecio] = useState(3500)
+    let precioF = 3500
 
     
     const aumentar = () => {
@@ -30,11 +31,11 @@ const OnAdd = () => {
     }
     let preciosSuma = () => {
         setPrecio(precioF * contador + precioF)
-        precio = precioF
+        precios = precioF
     }
     let preciosResta = () => {
         setPrecio(precioF * contador - precioF)
-        precio = precioF
+        precios = precioF
     }
 
     useEffect(() => {
@@ -46,16 +47,16 @@ const OnAdd = () => {
       }, [contador])
 
       useEffect(() => {
-        if (precio && (+precio > 500)) setPrecio(500)
-      }, [precio])
+        if (precios && (+precios > 17500)) setPrecio(17500)
+      }, [precios])
 
       useEffect(() => {
-        if (precio && (+precio < 100)) setPrecio(100)
-      }, [precio])
+        if (precios && (+precios < 3500)) setPrecio(3500)
+      }, [precios])
 
   return (
     <div>
-         <h2> PRODUCTO</h2>
+         
         <h3> Cantidad : {contador}</h3>
           <button onClick={aumentar}>
               +
@@ -64,7 +65,7 @@ const OnAdd = () => {
               -
           </button>
 
-          <h3>Precio : {precio}  </h3>
+          <h3>Precio : {precios}  </h3>
     </div>
   )
 }

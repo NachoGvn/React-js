@@ -8,11 +8,12 @@ const ItemDetailContainer  = ({greeting}) => {
     const {id} = useParams()
     console.log({id})
 
-    const [detailProducts, setDetailProducts] = useState([])
+    const [detailProducts, setDetailProducts] = useState()
+    
 
     useEffect(()  => {getProducts.then((response) => {
+        setDetailProducts(data.filter(product => product.id === id))
         setDetailProducts(response)
-        
     })
     .catch((error) => console.error(error));
     }, [])
@@ -21,10 +22,10 @@ const ItemDetailContainer  = ({greeting}) => {
         
             setTimeout(() =>{
                 resolve(data);
-                setDetailProducts(data.filter(product => product.id === id))
             },2000);
            
         })
+        
     
     return ( 
         detailProducts && <ItemDetail lista ={detailProducts} />
