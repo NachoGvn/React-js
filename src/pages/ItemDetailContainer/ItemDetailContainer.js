@@ -12,7 +12,6 @@ const ItemDetailContainer  = ({greeting}) => {
     
 
     useEffect(()  => {getProducts.then((response) => {
-        setDetailProducts(data.filter(product => product.id === id))
         setDetailProducts(response)
     })
     .catch((error) => console.error(error));

@@ -3,8 +3,8 @@ import {useEffect} from 'react'
 import data from '../MockData'
 import { useParams } from 'react-router-dom'
 
-const OnAdd = ({setContador, contador}) => {
-    let [stock,setStock] = useState(4)
+const OnAdd = (contador, setContador) => {
+    const [stock,setStock] = useState(4)
     let [precios,setPrecio] = useState(3500)
     let precioF = 3500
 

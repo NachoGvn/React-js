@@ -1,36 +1,35 @@
 import Item from "../Item/Item"
 import OnAdd from "../itemCount/itemCount"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
+import { CartContext } from "../../context/CartContext"
+
 
 
 
 const ItemDetail= ({lista}) => {
-  let [contador,setContador] = useState(1)
+const [contador,setContador] = useState(1)
+const {addToCart} = useContext(CartContext)
+  
+function add (lista, contador) {
+  addToCart (lista, contador)
+}
 
-  const handleClick = () => {
-      console.log(contador)
-  }
   return (
     <div>
-      {
         
-      lista.map((product) =>  (
-        
+      {lista.map((product) =>  (
         <Item
         key={product.id}
         nombre={product.nombre} 
         descripcion={product.descripcion} 
         precio={product.precio} 
         url={product.url} />
-        
-      )) 
-      
-      
-    }
-    <OnAdd setContador = {setContador} contador = {contador} />
-     <Link to={"/card"} onClick={handleClick} className = "finalizar">Finalizar compra</Link>
-      </div>
+      ))}
+      <OnAdd contador = {contador} setContador = {setContador} />
+      <Link to={'/cart'} onClick={() => add(lista)} className = "finalizar">Finalizar compra</Link>
+     </div>
+    
   )
 }
 
