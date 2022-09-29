@@ -6,10 +6,10 @@ import { CartContext } from "../../context/CartContext"
 
 
 
-
 const ItemDetail= ({lista}) => {
 const [contador,setContador] = useState(1)
 const {addToCart} = useContext(CartContext)
+
   
 function add (lista, contador) {
   addToCart (lista, contador)
@@ -27,7 +27,8 @@ function add (lista, contador) {
         url={product.url} />
       ))}
       <OnAdd contador = {contador} setContador = {setContador} />
-      <Link to={'/cart'} onClick={() => add(lista)} className = "finalizar">Finalizar compra</Link>
+      <button  onClick={() => addToCart} >Comprar</button>
+      <Link to={'/cart'}  className = "finalizar">finalizar compra</Link>
      </div>
     
   )

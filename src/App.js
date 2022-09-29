@@ -6,6 +6,8 @@ import OnAdd from './components/itemCount/itemCount';
 import ItemDetailContainer from './pages/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {CartProvider} from './context/CartProvider'
+import Cart from './components/Cart/Cart';
+
 
 function App() {
   return (
@@ -15,12 +17,14 @@ function App() {
   <BrowserRouter>
     <NavBar/>
       <Routes>
-        <Route path='/' element={<ItemListContainer/>} />
-        <Route path='home' element={<ItemListContainer/>} />
-        <Route path='contacto' element={<div>Contacto</div>} />
-        <Route path='productos' element={<div>Productos</div>} />
-        <Route path='aboutus' element={<div>About us</div>} />
-        <Route path='detail/:id' element={<ItemDetailContainer/>} />
+        <Route path="/" element={<ItemListContainer/>} />
+        <Route path="home" element={<ItemListContainer/>} />
+        <Route path="contacto" element={<div>Contacto</div>} />
+        <Route path="productos" element={<div>Productos</div>} />
+        <Route path="aboutus" element={<div>About us</div>} />
+        <Route path="cart" element={<Cart/>} /> 
+        <Route path="detail/:id" element={<ItemDetailContainer/>} />
+        
       </Routes>
      </BrowserRouter>
   </CartProvider>
