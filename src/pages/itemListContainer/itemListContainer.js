@@ -1,4 +1,3 @@
-import data from '../../components/MockData'
 import { useEffect, useState } from 'react'
 import ItemList from '../../components/ItemList/ItemList'
 import { Link } from 'react-router-dom'
@@ -11,31 +10,23 @@ const ItemListContainer  = ({greeting}) => {
     const db = getFirestore()
     const querySnapShot = collection(db, 'items')
     getDocs(querySnapShot).then((response) => {
-        const data = response.docs.map((doc)  => {
-            return {id: doc.id, ...doc.data()}
+        const data = response.docs.map((product)  => {
+            return {id: product.id, ...product.data()}
         })
         setProductList(data)
     })
+    .catch((error) => console.error(error));
 }
 
 
-    useEffect(()  => {getProducts.then((response) => {
-        setProductList(response)
+    useEffect(()  => {
+        firebase()
     })
-    .catch((error) => console.error(error));
-    }, [])
 
-    const getProducts = new Promise ((resolve, reject) => {
-           
-            setTimeout(() =>{
-                resolve(firebase);
-            },2000);
-        })
     
     return ( 
         <div>
-        <Link to={'/cart'} >carrito</Link>
-        <ItemList lista ={productList} />
+        <ItemList  productList ={productList} />
         
         </div>
             );

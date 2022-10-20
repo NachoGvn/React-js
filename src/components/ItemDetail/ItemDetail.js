@@ -6,28 +6,28 @@ import { CartContext } from "../../context/CartContext"
 
 
 
-const ItemDetail= ({lista}) => {
-const [contador,setContador] = useState(1)
+const ItemDetail= ({detailProducts}) => {
+const [cantidad,setcantidad] = useState(1)
 const {addToCart} = useContext(CartContext)
 
   
-function add (lista, contador) {
-  addToCart (lista, contador)
+const add = () => {
+  setcantidad(cantidad)
+  addToCart(detailProducts,cantidad)
 }
 
   return (
     <div>
         
-      {lista.map((product) =>  (
-        <Item
-        key={product.id}
-        nombre={product.nombre} 
-        descripcion={product.descripcion} 
-        precio={product.precio} 
-        url={product.url} />
-      ))}
-      <OnAdd contador = {contador} setContador = {setContador} />
-      <button  onClick={() => addToCart} >Comprar</button>
+         <div key={detailProducts.id}>
+         <h2 className='name'>{detailProducts.title} </h2>
+         <img className='image' src={detailProducts.image} alt={detailProducts.title} />
+         <h3 className='descripcion'>{detailProducts.description} </h3>
+         <h3 className='precio'>${detailProducts.price} </h3>
+     </div>
+      
+      <OnAdd detailProducts ={detailProducts} cantidad = {cantidad} setcantidad = {setcantidad} />
+      <button  onClick={() => add()} >Comprar</button>
       <Link to={'/cart'}  className = "finalizar">finalizar compra</Link>
      </div>
     

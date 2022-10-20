@@ -5,6 +5,8 @@ import Item from "../Item/Item"
 import { collection, addDoc, getFirestore,updateDoc,doc} from "firebase/firestore"
 import { Moment } from "moment/moment"
 import moment from "moment/moment"
+import OnAdd from "../itemCount/itemCount"
+
 
 const Cart = () => {
     const {cart, addToCart,removeItem} = useContext(CartContext)
@@ -12,20 +14,21 @@ const Cart = () => {
     const db = getFirestore()
 
     const createOrder = () => {
+      
       const order = {
         buyer : {
-          name: 'Ignacio',
-          phone: '3471566886',
-          email: 'hola@hotmail.com'
+          email: "hola@hotmail.com",
+          name: "Ignacio",
+          phone: 3471566886
         },
         items: cart,
-        total: cart.reduce((valorPasado, valorActual) => valorPasado + (valorActual.price * valorActual.quantity) , 0),
+        total: cart.cantidad * cart.price,
         date: moment().format()
       }
       const query = collection(db,'orders')
-      addDoc(query, order)
-      .then((response) => {alert('Gracias por su compra')
-      console.log(response)})
+      addDoc( query,order)
+      .then(({id}) => {alert('Gracias por su compra')
+      console.log(id)})
       .catch(() => alert('Tu compra no pudo ser completada'))
     }
 
@@ -53,7 +56,7 @@ const Cart = () => {
 
       
     
-
+ 
   return (
     <div>
         {cart.length === 0 ? (
@@ -64,19 +67,23 @@ const Cart = () => {
         ): (
             <>
         {cart.map((item) =>  (
-        <div key={item.id}>
-        <h3>{item.title} </h3>
-        <p>{item.price} </p>
-        <button onClick={()=> removeItem(item.id) }> Eliminar producto</button>
-        <button onClick={createOrder}> Crear la orden</button>
+          <div key={item.detailProducts.id}>
+          <h3 className="name">{item.detailProducts.title} </h3>
+          <h3 className="name">Cantidad: {item.cantidad} </h3>
+          <p className="precio">Precio total: ${item.detailProducts.price * item.cantidad} </p>
+          <img className="image" src={item.detailProducts.image} alt={item.detailProducts.title}/>
+          <button className="eliminar" onClick={()=> removeItem(item.id) }> Eliminar producto</button>
+          <button className="crear" onClick={createOrder}> Crear la orden</button>
+          </div>
+          
         
-        </div>
-      ))}
+          ))}
             </>
+            
         )}
         
     </div>
   )
-}
 
+}
 export default Cart

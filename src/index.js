@@ -5,17 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBZ4GJoB35ioUb4xKuxhbahIjSwvcFxBA0",
-  authDomain: "coderhouse-ecommerce-8e05e.firebaseapp.com",
-  projectId: "coderhouse-ecommerce-8e05e",
-  storageBucket: "coderhouse-ecommerce-8e05e.appspot.com",
-  messagingSenderId: "279628071846",
-  appId: "1:279628071846:web:116a8d0cee16a1e47c4567"
+  apiKey: "AIzaSyBybUbFL4jqIC2yJ3vPalz2CY_ehKzCR4A",
+  authDomain: "coderhouse-proyecto-ad2aa.firebaseapp.com",
+  projectId: "coderhouse-proyecto-ad2aa",
+  storageBucket: "coderhouse-proyecto-ad2aa.appspot.com",
+  messagingSenderId: "475581732888",
+  appId: "1:475581732888:web:1e0ba231f28f2d75ff4b6d",
+  measurementId: "G-PR5R4V04JH"
 };
 
 // Initialize Firebase

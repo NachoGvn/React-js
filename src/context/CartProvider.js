@@ -7,13 +7,14 @@ export const CartProvider = ({children}) => {
   const [cart, setCart] = useState([])
 
  
-  const addToCart = (Item, cantidad) => {
-    if(isInCart(Item.id)){
+  const addToCart = (detailProducts, cantidad) => {
+    console.log(detailProducts,cantidad)
+    if(isInCart(detailProducts.id)){
       alert ("ya esta en el carrito")
     }
     else{ 
-      setCart([...cart,{Item, cantidad}])
-      console.log('cart', [...cart, {...Item,cantidad}])
+      setCart([...cart,{detailProducts, cantidad}])
+      console.log('cart', [...cart, {...detailProducts,cantidad}])
     }
   }
 
@@ -22,7 +23,7 @@ export const CartProvider = ({children}) => {
   }
   
   const isInCart = ({id}) => {
-    return cart.some((Item) => Item.id === id)
+    return cart.some((item) => item.id === id)
   }
 
     const removeItem =(productId) => {

@@ -72,6 +72,7 @@
 }
 
 .carro {
+  color: black;
   display: flex;
   justify-content: flex-end;
   height: 30px;
@@ -81,17 +82,32 @@
 }
 
 .image {
-  margin-top: 50px;
+  
+  align-items: center;
+  width: 450px;
+  height: 450px;
 }
 
 .name {
   justify-content: center;
+  color: black;
 }
 
 .descripcion {
   justify-content: justify;
   padding-left: 200px;
   padding-right: 200px;
+}
+
+.precio {
+  color: black;
+  margin-bottom: 50px;
+  border: black;
+}
+
+.borde {
+  padding-bottom: 5px;
+  border-bottom: 4px solid gray;
 }
 
 .finalizar {
@@ -104,6 +120,14 @@
   margin-bottom: 20px;
   margin-left: 43.5rem;
   margin-right: 43.5rem;
- 
+}
+
+.eliminar {
   
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.crear {
+  justify-content: center;
 }

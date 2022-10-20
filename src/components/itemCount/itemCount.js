@@ -3,61 +3,60 @@ import {useEffect} from 'react'
 import data from '../MockData'
 import { useParams } from 'react-router-dom'
 
-const OnAdd = ({contador, setContador}) => {
-    const [stock,setStock] = useState(4)
-    let [precios,setPrecio] = useState(3500)
-    let precioF = 3500
+const OnAdd = ({cantidad, setcantidad, detailProducts}) => {
+    const [stock,setStock] = useState(detailProducts.stock)
+    let [precios,setPrecio] = useState(detailProducts.price)
+    let precioF = detailProducts.price
 
     
     const aumentar = () => {
-        setContador(contador + 1)
+        setcantidad(cantidad + 1)
         setStock(stock - 1)
         preciosSuma()
-        if ( contador == 5 && stock === 0){
+        if ( cantidad == detailProducts.stock && stock === 0){
             alert("No hay mas stock")
             
             
         }
-        console.log(setContador)
     }
     const restar = () => {
-        setContador(contador - 1)
+        setcantidad(cantidad - 1)
         setStock(stock + 1)
         preciosResta()
-        if (contador === 0){
+        if (cantidad === 0){
             alert("stock no disponible")
         }
-        console.log(setContador)
+        
     }
     let preciosSuma = () => {
-        setPrecio(precioF * contador + precioF)
+        setPrecio(precioF * cantidad + precioF)
         precios = precioF
     }
     let preciosResta = () => {
-        setPrecio(precioF * contador - precioF)
+        setPrecio(precioF * cantidad - precioF)
         precios = precioF
     }
 
     useEffect(() => {
-        if (contador && (+contador > 5)) setContador(5)
-      }, [contador])
+        if (cantidad && (+cantidad > detailProducts.stock)) setcantidad(detailProducts.stock)
+      }, [stock])
 
       useEffect(() => {
-        if (contador && (+contador < 1)) setContador(1)
-      }, [contador])
+        if (cantidad && (+cantidad < 1)) setcantidad(1)
+      }, [stock])
 
       useEffect(() => {
-        if (precios && (+precios > 17500)) setPrecio(17500)
+        if (precios && (+precios > detailProducts.price * detailProducts.stock)) setPrecio(detailProducts.price*5)
       }, [precios])
 
       useEffect(() => {
-        if (precios && (+precios < 3500)) setPrecio(3500)
+        if (precios && (+precios < detailProducts.price)) setPrecio(detailProducts.price)
       }, [precios])
 
   return (
     <div>
          
-        <h3> Cantidad : {contador}</h3>
+        <h3> Cantidad : {cantidad}</h3>
           <button onClick={aumentar}>
               +
           </button>
